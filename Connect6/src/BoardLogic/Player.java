@@ -17,7 +17,7 @@ public class Player  {
 	
 	private static int maxHorizontalAndVerticalRuns = 13 * 19, maxNumOfShiftsForHorizontal = 13,
 			maxNumOfShiftsForDiagonal = 13, maxDiagonalRuns = 13 * 13;
-	// HashMao<Integer, Piece> pieces; // List<List>
+	
 
 	BigInteger pieces;
 
@@ -46,32 +46,17 @@ public class Player  {
 	
 	public void draw(Graphics graphics) {
 		
-		/*BigInteger temp1 = pieces;
-		BigInteger clear = new BigInteger("0");
-		BigInteger mask = new BigInteger("1");
-		int j=0;
-		while(temp1.compareTo(clear)>0 && j<=Board.N*Board.N)
-		{
-			if(j>0&&j%19==0)
-				temp1.shiftRight(1);
-			if(mask.and(temp1).equals(mask))
-			{
-				graphics.drawImage(image,gamePanel.boardXStart+(j % Board.N) * Board.CellSize -18 ,
-						  (j / Board.N) * Board.CellSize + Board.CellSize - 8, Board.CellSize, Board.CellSize, null);
-			}
-			temp1.shiftRight(1);
-			j++;
-		}*/
+		
 		BigInteger mask = new BigInteger("1");
 		BigInteger temp = new BigInteger("0");
 		for (int i = 0; i <= Board.N * Board.N; i++, mask = mask.shiftLeft(1)) {
 			if (i > 0 && i % 19 == 0)
 				mask = mask.shiftLeft(1);
-			if (pieces.and(mask).compareTo(temp) != 0)
+			if (pieces.and(mask).compareTo(temp) != 0) {
 				graphics.drawImage(image,gamePanel.boardXStart + (i % Board.N) * Board.CellSize - (Board.CellSize/2) ,
 						(i / Board.N) * Board.CellSize + Board.CellSize , Board.CellSize, Board.CellSize, null);
-
-		}
+			}
+		}	
 		
 		
 	}

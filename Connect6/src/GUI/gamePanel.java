@@ -33,7 +33,7 @@ public class gamePanel extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.drawImage(image, imageOfBoardX, 0, boardWidth, boardWidth, null);
-		g.drawImage(cursor, xCursor - (Board.CellSize / 6), yCursor, Board.CellSize / 2, Board.CellSize / 2, null);
+		g.drawImage(cursor, xCursor-Board.CellSize/4, yCursor + Board.CellSize/8, Board.CellSize / 2, Board.CellSize / 2, null);
 		board.draw(g);
 	}
 
@@ -79,8 +79,7 @@ public class gamePanel extends JPanel {
 				xCursor = (int) (e.getPoint().getX());
 				yCursor = (int) (e.getPoint().getY());
 
-				System.out.println("X:" + xCursor + " Y:" + yCursor);
-
+			
 				if (yCursor >= boardYStart && yCursor <= boardYEND) {
 					yCursor = (yCursor / Board.CellSize) * Board.CellSize;
 				} else if (yCursor < boardYStart) {
@@ -100,7 +99,7 @@ public class gamePanel extends JPanel {
 					xCursor = boardXEND;
 				}
 
-				System.out.println(xCursor);
+				
 				curPoint.setLocation(xCursor, yCursor);
 				repaint();
 
