@@ -41,10 +41,12 @@ public class GameFrame extends JFrame {
 	
 		Player.calcAllMasks();
          pane = new gamePanel();
+       
         this.setIconImage(icon);
         this.setTitle("Java Connect6 Game");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.add(pane);
+		
 		Color bg = new Color(242,176,109,255);
 		pane.setBackground(bg);
 		

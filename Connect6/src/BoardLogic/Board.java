@@ -37,8 +37,7 @@ public class Board {
 		playerB.draw(graphics);
 		playerW.draw(graphics);
 		AttributedCharacterIterator x;
-		x.
-		graphics.drawString(, piecesToPut, piecesToPut);
+		
 		
 		
 

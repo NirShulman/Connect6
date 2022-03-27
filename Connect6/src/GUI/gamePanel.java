@@ -1,15 +1,22 @@
 package GUI;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import BoardLogic.Board;
@@ -22,14 +29,35 @@ public class gamePanel extends JPanel {
 	int xCursor, yCursor;
 	// public static int boardXStart =
 	// (Board.CellSize*((Board.N)/2)-((2*Board.CellSize)/3));
-
+	JLabel jlabel ;
 	
-
+public void addWinTextAndDisablePanel(Graphics g)
+{
+	String text = new String("Win!");
+	Font font = new Font("Calibri",Font.ITALIC, 96);
+	g.setColor(new Color(196, 30, 58));
+	FontMetrics metrics = g.getFontMetrics(font);
+	int x = Dimensions.imageOfBoardX+(Dimensions.boardWidth - metrics.stringWidth(text))/2;
+	int y = (Dimensions.boardWidth - metrics.stringWidth(text))/2;
+	g.setFont(font);
+	g.drawString(text, (Dimensions.screenSize.width-metrics.stringWidth(text))/2, (Dimensions.screenSize.height-metrics.getHeight())/2);
+}
 	public void paint(Graphics g) {
+		
 		super.paint(g);
+	
+		
 		g.drawImage(image, Dimensions.imageOfBoardX, 0, Dimensions.boardWidth, Dimensions.boardWidth, null);
 		g.drawImage(cursor, xCursor-Dimensions.CellSize/4, yCursor + Dimensions.CellSize/8, Dimensions.CellSize / 2, Dimensions.CellSize / 2, null);
 		board.draw(g);
+		addWinTextAndDisablePanel(g);
+		/*for(MouseListener mL :this.getMouseListeners())
+		{
+			
+			this.removeMouseListener(mL);
+		}*///disabling clicks
+		
+		
 	}
 
 	/*
@@ -44,6 +72,8 @@ public class gamePanel extends JPanel {
 	 * board.Paint(g); if(board.over==true) this.setVisible(false); }
 	 */
 	public gamePanel() {
+		WinText win = new WinText();
+		
 		board = new Board();
 		try {
 			image = ImageIO.read(new File("Images/goboard.png"));
@@ -107,7 +137,14 @@ public class gamePanel extends JPanel {
 			}
 
 		});
-
+	
+		 
+		   
+		    JLabel label1 = new JLabel();
+		    label1.setText("WIN!!!!");
+		    label1.setBounds(0, 0, 200, 50);
+		    
+		    setVisible(true);
 	}
 
 }
