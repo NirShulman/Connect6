@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import BoardLogic.Board;
+import BoardLogic.Dimensions;
 
 public class gamePanel extends JPanel {
 	BufferedImage image, cursor;
@@ -22,18 +23,12 @@ public class gamePanel extends JPanel {
 	// public static int boardXStart =
 	// (Board.CellSize*((Board.N)/2)-((2*Board.CellSize)/3));
 
-	public static int boardYStart = (int) (Board.CellSize * (1.15));
-	int boardYEND = (int) (1.015 * (Board.CellSize * Board.N));
-	static int boardWidth = (int) (Board.CellSize * (Board.N + 1));
-	static int imageOfBoardX = (int) (Board.screenSize.getWidth() / 4.5);
-
-	public static int boardXStart = (int) (imageOfBoardX + 70);
-	int boardXEND = boardXStart + (Board.N - 1) * board.CellSize;
+	
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawImage(image, imageOfBoardX, 0, boardWidth, boardWidth, null);
-		g.drawImage(cursor, xCursor-Board.CellSize/4, yCursor + Board.CellSize/8, Board.CellSize / 2, Board.CellSize / 2, null);
+		g.drawImage(image, Dimensions.imageOfBoardX, 0, Dimensions.boardWidth, Dimensions.boardWidth, null);
+		g.drawImage(cursor, xCursor-Dimensions.CellSize/4, yCursor + Dimensions.CellSize/8, Dimensions.CellSize / 2, Dimensions.CellSize / 2, null);
 		board.draw(g);
 	}
 
@@ -80,23 +75,23 @@ public class gamePanel extends JPanel {
 				yCursor = (int) (e.getPoint().getY());
 
 			
-				if (yCursor >= boardYStart && yCursor <= boardYEND) {
-					yCursor = (yCursor / Board.CellSize) * Board.CellSize;
-				} else if (yCursor < boardYStart) {
-					yCursor = boardYStart;
+				if (yCursor >= Dimensions.boardYStart && yCursor <= Dimensions.boardYEND) {
+					yCursor = (yCursor / Dimensions.CellSize) * Dimensions.CellSize;
+				} else if (yCursor < Dimensions.boardYStart) {
+					yCursor = Dimensions.boardYStart;
 				} else {
-					yCursor = boardYEND;
+					yCursor = Dimensions.boardYEND;
 				}
 
 				// 813
 
-				if (xCursor >= boardXStart && xCursor <= boardXEND) {
-					adjuster = xCursor % Board.CellSize / (Board.CellSize / 2);
-					xCursor = (xCursor / Board.CellSize + adjuster) * Board.CellSize;
-				} else if (xCursor <= boardXStart) {
-					xCursor = boardXStart;
+				if (xCursor >= Dimensions.boardXStart && xCursor <= Dimensions.boardXEND) {
+					adjuster = xCursor % Dimensions.CellSize / (Dimensions.CellSize / 2);
+					xCursor = (xCursor /Dimensions.CellSize + adjuster) *Dimensions.CellSize;
+				} else if (xCursor <= Dimensions.boardXStart) {
+					xCursor = Dimensions.boardXStart;
 				} else {
-					xCursor = boardXEND;
+					xCursor = Dimensions.boardXEND;
 				}
 
 				

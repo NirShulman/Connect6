@@ -39,7 +39,7 @@ public class GameFrame extends JFrame {
 	
 		
 	
-		
+		Player.calcAllMasks();
          pane = new gamePanel();
         this.setIconImage(icon);
         this.setTitle("Java Connect6 Game");
