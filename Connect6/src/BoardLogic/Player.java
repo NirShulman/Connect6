@@ -97,10 +97,10 @@ public class Player {
 		 * checkVerticalMask.shiftLeft(1); }
 		 */
 		for (int rowRun = 0; rowRun < 20; rowRun++) {
-			for (int colRun = 0; colRun <= 13; colRun++) {
+			for (int colRun = 0; colRun <= 14; colRun++) {
 				allMasks.add(checkHorizontalMask);
 				allMasks.add(checkVerticalMask);
-				if (colRun == 13)
+				if (colRun == 14)
 					checkHorizontalMask = checkHorizontalMask.shiftLeft(6);
 				else {
 					checkHorizontalMask = checkHorizontalMask.shiftLeft(1);
@@ -136,7 +136,6 @@ public class Player {
 			pieces = pieces.or(mask);
 			System.out.println(pieces.toString(16));
 			Board.combinedBoard = Board.combinedBoard.or(mask);
-			didWin();
 			return true;
 		} else
 			return false;

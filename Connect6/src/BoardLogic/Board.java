@@ -53,6 +53,8 @@ public class Board {
 		
 		if (validMove) {
 
+			checkWin(curPlayer);
+						
 			piecesToPut--;
 			if (piecesToPut == 0) {
 
@@ -67,18 +69,18 @@ public class Board {
 	}
 
 	public boolean checkWin(Player p) {
-	/*	if (p.didWin()) {
-		
-			if(turn==true)
+		if (p.didWin()) {
+			over=true;
+			
+			if(p==playerB)
 				winMessage= "Black Won";
 			else
 				winMessage = "White Won";
-			System.out.println(winMessage);
 			return true;
 			
 		}
-		return false*/
-		return true;
+		return false;
+		
 	}
 
 	public boolean checkDraw(Player p, Player p2) {
