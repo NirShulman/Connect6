@@ -19,6 +19,7 @@ import javax.swing.WindowConstants;
 
 import BoardLogic.Board;
 import BoardLogic.Player;
+import BoardLogic.playerFunctions;
 
 
 public class GameFrame extends JFrame {
@@ -39,7 +40,7 @@ public class GameFrame extends JFrame {
 	
 		
 	
-		Player.calcAllMasks();
+		playerFunctions.calcAllMasks();
          pane = new gamePanel();
        
         this.setIconImage(icon);

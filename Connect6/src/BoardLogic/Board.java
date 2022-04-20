@@ -26,11 +26,15 @@ public class Board {
 	private Player playerB, playerW;
 	private Player curPlayer;
 
-	public Board() {
-		playerW = new Player(new BigInteger("0"), "Images/White.png"); // 1010 1010 0 0101 0101 0 1010 1010
-		playerB = new Player(new BigInteger("0"), "Images/Black.png");
+	public Board(boolean AI) {
+		 
+		playerB = new HumanPlayer(new BigInteger("0"), "Images/Black.png");
 		curPlayer = playerB;
 		combinedBoard = new BigInteger("0");
+		if(AI)
+			playerW = new ComputerPlayer(new BigInteger("0"), "Images/White.png");
+		else
+			playerW = new HumanPlayer(new BigInteger("0"), "Images/White.png");
 	}
 
 	public void draw(Graphics graphics) {
@@ -86,7 +90,7 @@ public class Board {
 	public boolean checkDraw(Player p, Player p2) {
 		BigInteger fullBoard = new BigInteger(Dimensions.fullBoardHex, 16);
 		BigInteger temp = new BigInteger("0", 2);
-		temp = temp.or(p.pieces).or(p2.pieces);
+		temp = temp.or(p.getPieces()).or(p2.getPieces());
 		if (temp.equals(fullBoard))
 			return true;
 		return false;

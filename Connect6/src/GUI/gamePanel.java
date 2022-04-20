@@ -80,7 +80,7 @@ public class gamePanel extends JPanel {
 
 	public gamePanel() {
 
-		board = new Board();
+		board = new Board(true);
 		try {
 
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
