@@ -27,7 +27,7 @@ import BoardLogic.Dimensions;
 
 public class gamePanel extends JPanel {
 	Image image, cursor, winImage;
-
+	boolean AI;
 	Board board;
 	Point curPoint = new Point();
 	int xCursor, yCursor;
@@ -78,8 +78,8 @@ public class gamePanel extends JPanel {
 
 	}
 
-	public gamePanel() {
-
+	public gamePanel(boolean AI) {
+		
 		board = new Board(true);
 		try {
 
